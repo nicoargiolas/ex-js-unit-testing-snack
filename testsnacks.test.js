@@ -1,4 +1,4 @@
-const { getInitials, createSlug, average, isPalindrome } = require('./testsnacks.js')
+const { getInitials, createSlug, average, isPalindrome, findPostById } = require('./testsnacks.js')
 
 // 🏆 Snack 1
 // Creare un test che verifichi la seguente descrizione:
@@ -51,3 +51,72 @@ test("La funzione isPalindrome verifica se una stringa è un palindromo.", () =>
     expect(isPalindrome("Anna")).toBeTruthy();
     expect(isPalindrome("I Topi Non Avevano Nipoti")).toBeTruthy();
 })
+
+
+// 🏆 Snack 6
+// Creare un test che verifichi la seguente descrizione:
+// 👉 "La funzione createSlug lancia un errore se il titolo è vuoto o non valido."
+
+test("La funzione createSlug lancia un errore se il titolo è vuoto o non valido.", () => {
+    expect(() => createSlug("")).toThrow();
+    expect(() => createSlug("      ")).toThrow();
+})
+
+
+// 🏆 Snack 7
+// Crea un array di oggetti posts, in cui ogni oggetto ha le proprietà id, title e slug.
+// Creare un test che verifichi le seguenti descrizioni:
+// 👉 "La funzione findPostById restituisce il post corretto dato l’array di post e l’id"
+
+// Creare uno o più test aggiuntivi che controllino che la struttura dati passati sia conforme (ogni post ha le proprietà id, title e slug, viene passato un id numerico).
+
+let posts;
+
+beforeEach(() => {
+    posts = [
+        {
+            id: 1,
+            title: "Come imparare JavaScript",
+            slug: "come-imparare-javascript"
+        },
+        {
+            id: 2,
+            title: "10 trucchi per HTML e CSS",
+            slug: "10-trucchi-per-html-e-css"
+        },
+        {
+            id: 3,
+            title: "Introduzione a React",
+            slug: "introduzione-a-react"
+        },
+        {
+            id: 4,
+            title: "Frontend vs Backend",
+            slug: "frontend-vs-backend"
+        },
+        {
+            id: 5,
+            title: "Perché usare Jest nei test",
+            slug: "perche-usare-jest-nei-test"
+        }
+    ];
+});
+
+test("La funzione findPostById restituisce il post corretto dato l’array di post e l’id", () => {
+    expect(findPostById(posts, 1)).toEqual(posts[0]);
+    expect(findPostById(posts, 3)).toEqual(posts[2]);
+});
+
+
+test("Controllo che la struttura dati passati sia conforme", () => {
+    posts.forEach(p => {
+        expect(p.id).toBeTruthy();
+        expect(p.title).toBeTruthy();
+        expect(p.slug).toBeTruthy()
+    })
+})
+
+test("La funzione findPostById accetta solo un id numerico", () => {
+    expect(() => findPostById(posts, "ciao")).toThrow();
+    expect(() => findPostById(posts, "1")).toThrow();
+});

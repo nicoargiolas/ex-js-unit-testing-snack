@@ -12,7 +12,12 @@ function getInitials(completeName) {
 // 👉 "La funzione createSlug restituisce una stringa in lowercase."
 
 function createSlug(string) {
-    return string.replaceAll(" ", "-").toLowerCase();
+    if (string.trim()) {
+        return string.replaceAll(" ", "-").toLowerCase();
+    } else {
+        throw new Error("La stringa deve contenere dei caratteri")
+    }
+
 }
 
 
@@ -43,9 +48,26 @@ function isPalindrome(string) {
 }
 
 
+// 🏆 Snack 7
+// Crea un array di oggetti posts, in cui ogni oggetto ha le proprietà id, title e slug.
+// Creare un test che verifichi le seguenti descrizioni:
+// 👉 "La funzione findPostById restituisce il post corretto dato l’array di post e l’id"
+
+// Creare uno o più test aggiuntivi che controllino che la struttura dati passati sia conforme (ogni post ha le proprietà id, title e slug, viene passato un id numerico).
+
+function findPostById(posts, id) {
+    if (typeof id === "number") {
+        return posts.find(p => p.id === id)
+    } else {
+        throw new Error("L'id inserito deve essere di tipo numerico")
+    }
+}
+
+
 module.exports = {
     getInitials,
     createSlug,
     average,
-    isPalindrome
+    isPalindrome,
+    findPostById
 }
