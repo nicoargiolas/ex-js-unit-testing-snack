@@ -7,7 +7,8 @@ const { getInitials, createSlug, average, isPalindrome, findPostById } = require
 test("La funzione getInitials restituisce le iniziali di un nome completo.", () => {
     expect(getInitials("Nicola Argiolas")).toBe("NA");
     expect(getInitials("Jannik Sinner")).toBe("JS");
-    expect(getInitials("nicola argiolas")).toBe("NA")
+    expect(getInitials("nicola argiolas")).toBe("NA");
+    expect(getInitials("Lionel   Messi")).toBe("LM")
 });
 
 

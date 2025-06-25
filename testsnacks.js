@@ -3,7 +3,8 @@
 // 👉 "La funzione getInitials restituisce le iniziali di un nome completo."
 
 function getInitials(completeName) {
-    return completeName.trim()[0].toUpperCase() + (completeName.trim().split(" "))[1][0].toUpperCase()
+    const [nome, cognome] = completeName.trim().split(" ").filter(str => str !== "");
+    return nome.charAt(0).toUpperCase() + cognome.charAt(0).toUpperCase()
 }
 
 
