@@ -30,7 +30,7 @@ test("La funzione createSlug restituisce una stringa in lowercase.", () => {
 test("La funzione average calcola la media aritmetica di un array di numeri.", () => {
     expect(average([1, 2, 3, 4, 5])).toBe(3);
     expect(average([2, 2, 10, 18, 18])).toBe(10);
-    expect(average([0, 5, 5, 10])).toBe(5);
+    expect(() => average([0, "ciao", 5, 10])).toThrow();
 })
 
 // 🏆 Snack 4

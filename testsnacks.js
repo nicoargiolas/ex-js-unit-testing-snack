@@ -27,6 +27,12 @@ function createSlug(string) {
 // 👉 "La funzione average calcola la media aritmetica di un array di numeri."
 
 function average(array) {
+    array.forEach(n => {
+        if (isNaN(n)) {
+            throw new Error("La funzione average chiede solo valori numerici")
+        }
+    })
+
     const somma = array.reduce((acc, curr) => {
         return acc + curr
     }, 0)
