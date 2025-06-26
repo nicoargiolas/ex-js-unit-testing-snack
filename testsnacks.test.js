@@ -50,6 +50,7 @@ test("La funzione isPalindrome verifica se una stringa è un palindromo.", () =>
     expect(isPalindrome("otto")).toBeTruthy();
     expect(isPalindrome("jest")).toBeFalsy();
     expect(isPalindrome("Anna")).toBeTruthy();
+    expect(isPalindrome(" otto   ")).toBeTruthy();
     expect(isPalindrome("I Topi Non Avevano Nipoti")).toBeTruthy();
 })
 
